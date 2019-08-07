@@ -20,6 +20,7 @@
 
     <!-- 视频 -->
     <video id="videoInput" style="object-fit: cover;"></video>
+    <canvas id="videoOutput"></canvas>
     <button>1111</button>
     <!-- 视频 -->
 <script>
@@ -60,10 +61,36 @@
             video.style.height = `${window.innerHeight}px`
             video.srcObject = stream
             video.play()
+            
+            let src = new cv.Mat(video.height, video.width, cv.CV_8UC4)
+            let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1)
+            let cap = new cv.VideoCapture(video)
+            const FPS = 30;
+            
+            function processVideo(){
+                try{
+                    if(stream){
+                        src.delete()
+                        dst.delete()
+                        return
+                    }
+                    let begin = Date.now()
+                    cap.read(src)
+                    cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY)
+                    cv.imshow('videoOutput', dst)
+                    let delay = 1000/FPS - (Date.now() - begin)
+                    setTimeout(processVideo, delay)
+                }catch(e){
+                    alert(e)
+                }
+                
+            }
+            
         }).catch(function(err){
             console.log('an error')
         })
     }
+
 </script>
 </body>
 </html>
