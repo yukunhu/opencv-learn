@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 图像 -->
+    <!-- <img src="./lena.png" alt="" id="img">
+    <canvas id="canvas"></canvas> -->
+    <!-- 图像 -->
+
+    <!-- 视频 -->
+    <video id="videoInput"></video>
+    <!-- 视频 -->
+<script>
+    function createScript(callback){
+        let script = document.createElement("script")
+        script.src = './opencv.js'
+        script.setAttribute('async', '');
+        document.body.appendChild(script)
+        script.addEventListener('load', function(e){
+            if(cv.getBuildInformation){
+                callback()
+            }else{
+                cv['onRuntimeInitialized']=()=>{
+                    callback()
+                }
+            }
+        })
+    }
+    createScript(renderVideo)
+    // 图片
+    function renderImage(){
+        let imgELe = document.getElementById('img')
+        let src = cv.imread(imgELe)
+        let dst = new cv.Mat()
+        scale = 20
+        shift = 1
+        src.convertTo(dst, cv.CV_8U, scale, shift);
+        cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY)
+        cv.imshow('canvas', dst)
+        src.delete()
+        dst.delete()
+    }
+    // 视频
+    function renderVideo(){
+        let video = document.getElementById('videoInput')
+        navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream){
+            video.srcObject = stream
+            video.play()
+        }).catch(function(err){
+            console.log('an error')
+        })
+    }
+</script>
+</body>
+</html>
