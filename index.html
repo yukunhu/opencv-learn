@@ -81,7 +81,6 @@
                     }
                     let begin = Date.now()
                     document.getElementById("button").innerHTML = begin
-                    alert(11111)
                     cap.read(src)
                     cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY)
                     cv.imshow('videoOutput', dst)
