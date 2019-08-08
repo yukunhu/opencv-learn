@@ -81,12 +81,10 @@
                     }
                     let begin = Date.now()
                     document.getElementById("button").innerHTML = begin
-                    cap.read(src)
                     alert(11111)
+                    cap.read(src)
                     cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY)
-                    alert(22222)
                     cv.imshow('videoOutput', dst)
-                    alert(33333)
                     let delay = 1000/FPS - (Date.now() - begin)
                     setTimeout(processVideo, delay)
                 }catch(e){
