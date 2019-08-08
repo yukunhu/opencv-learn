@@ -60,6 +60,7 @@
     // 摄像头视频
     function renderWebcamVideo(){
         let video = document.getElementById('videoInput')
+        let canvas = document.getElementById('videoOutput')
         navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream){
             video.srcObject = stream
             video.play().then(function(){
@@ -68,8 +69,8 @@
                 let src = new cv.Mat(video.height, video.width, cv.CV_8UC4)
                 let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1)
                 let cap = new cv.VideoCapture(video)
-                video.style.width = window.innerWidth + 'px'
-                video.style.height = window.innerHeight + "px"
+                canvas.style.width = window.innerWidth + 'px'
+                canvas.style.height = window.innerHeight + "px"
                 const FPS = 30;
                 processVideo()
                 function processVideo(){
