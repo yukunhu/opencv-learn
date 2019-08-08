@@ -65,12 +65,12 @@
             video.style.width = windowWidthPx
             video.style.height = windowHeightPx
             video.srcObject = stream
+            let cap = new cv.VideoCapture(video)
             video.play().then(function(){
                 alert(11111)
                 let src = new cv.Mat(video.videoWidth, video.width, cv.CV_8UC4)
                 let dst = new cv.Mat(video.videoHeight, video.width, cv.CV_8UC1)
                 const FPS = 30;
-                let cap = new cv.VideoCapture(video)
                 processVideo()
 
             }).catch(function(e){
