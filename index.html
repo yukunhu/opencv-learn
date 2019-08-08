@@ -64,10 +64,12 @@
             let windowHeightPx = `${windowHeight}px`
             video.style.width = windowWidthPx
             video.style.height = windowHeightPx
-            video.setAttribute({width: windowWidth, height: windowHeight})
+            video.setAttribute(width, windowWidth)
+            video.setAttribute(height, windowHeight)
             canvas.style.width = windowWidthPx
             canvas.style.height = windowHeightPx
-            canvas.setAttribute({width: windowWidth, height: windowHeight})
+            canvas.setAttribute(width, windowWidth)
+            canvas.setAttribute(height, windowHeight)
             video.srcObject = stream
             video.play()
             
