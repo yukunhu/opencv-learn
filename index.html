@@ -62,6 +62,7 @@
         let video = document.getElementById('videoInput')
         let canvas = document.getElementById('videoOutput')
         navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream){
+            video.srcObject = stream
             video.play().then(function(){
                 let src = new cv.Mat(video.height, video.width, cv.CV_8UC4)
                 let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1)
