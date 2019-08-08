@@ -56,9 +56,14 @@
     // 视频
     function renderVideo(){
         let video = document.getElementById('videoInput')
+        let canvas = document.getElementById('videoOutput')
         navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream){
-            video.style.width = `${window.innerWidth}px`
-            video.style.height = `${window.innerHeight}px`
+            let windowWidth = `${window.innerWidth}px`
+            let windowHeight = `${window.innerHeight}px`
+            video.style.width = windowWidth
+            video.style.height = windowHeight
+            canvas.style.width = windowWidth
+            canvas.style.height = windowHeight
             video.srcObject = stream
             video.play()
             
@@ -68,7 +73,6 @@
             const FPS = 30;
             
             function processVideo(){
-                alert(33333)
                 try{
                     alert(44444)
                     if(!stream){
