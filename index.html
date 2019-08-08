@@ -65,8 +65,7 @@
             video.style.width = windowWidthPx
             video.style.height = windowHeightPx
             video.srcObject = stream
-            video.play()
-            setTimeout(function(){
+            video.play().then(function(){
                 alert(video.videoWidth)
             }, 3000)
             return
