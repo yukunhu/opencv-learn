@@ -70,6 +70,7 @@
                 let cap = new cv.VideoCapture(video)
                 let src = new cv.Mat(video.videoWidth, video.videoHeight, cv.CV_8UC4)
                 let dst = new cv.Mat(video.videoWidth, video.videoHeight, cv.CV_8UC1)
+                alert(22222)
                 const FPS = 30;
                 processVideo(cap, src, dst, FPS)
 
@@ -79,11 +80,7 @@
             
             function processVideo(cap, src, dst, FPS){
                 try{
-                    if(!stream){
-                        src.delete()
-                        dst.delete()
-                        return
-                    }
+                    alert(333333)
                     let begin = Date.now()
                     document.getElementById("button").innerHTML = begin
                     cap.read(src)
