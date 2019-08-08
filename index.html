@@ -81,13 +81,14 @@
                     let delay = 1000/FPS - (Date.now() - begin)
                     setTimeout(processVideo, delay)
                 }catch(e){
+                    alert(22222)
                     alert(e)
                 }
                 
             }
             setTimeout(processVideo, 0);
         }).catch(function(err){
-            alert(err)
+            alert(11111, err)
         })
     }
 
