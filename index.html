@@ -58,12 +58,16 @@
         let video = document.getElementById('videoInput')
         let canvas = document.getElementById('videoOutput')
         navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream){
-            let windowWidth = `${window.innerWidth}px`
-            let windowHeight = `${window.innerHeight}px`
-            video.style.width = windowWidth
-            video.style.height = windowHeight
-            canvas.style.width = windowWidth
-            canvas.style.height = windowHeight
+            let windowWidth = window.innerWidth
+            let windowHeight = window.innerHeight
+            let windowWidthPx = `${windowWidth}px`
+            let windowHeightPx = `${windowHeight}px`
+            video.style.width = windowWidthPx
+            video.style.height = windowHeightPx
+            video.setAttribute({width: windowWidth, height: windowHeight})
+            canvas.style.width = windowWidthPx
+            canvas.style.height = windowHeightPx
+            canvas.setAttribute({width: windowWidth, height: windowHeight})
             video.srcObject = stream
             video.play()
             
