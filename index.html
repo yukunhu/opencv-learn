@@ -21,7 +21,7 @@
     <!-- 视频 -->
     <video id="videoInput" style="object-fit: cover;"></video>
     <canvas id="videoOutput"></canvas>
-    <button>1111</button>
+    <button id="button">1111</button>
     <!-- 视频 -->
 <script>
     function createScript(callback){
@@ -75,6 +75,7 @@
                         return
                     }
                     let begin = Date.now()
+                    document.getElementById("button").innerHTML = begin
                     cap.read(src)
                     cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY)
                     cv.imshow('videoOutput', dst)
