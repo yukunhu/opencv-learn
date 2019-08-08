@@ -67,7 +67,7 @@
                 let streamWidth = video.videoWidth
                 let streamHeight = video.videoHeight
                 let windowWidth = window.innerWidth
-                let windowHeight = window.innerWidth
+                let windowHeight = window.innerHeight
                 let streamRatio = streamWidth / streamHeight
                 let windowRatio = windowWidth / windowHeight
                 video.width = streamWidth
@@ -76,17 +76,11 @@
                 let dst = new cv.Mat(streamHeight, streamWidth, cv.CV_8UC1)
                 let cap = new cv.VideoCapture(video)
                 if(streamRatio > windowRatio){ // 视频宽
-                    alert(11111)
                     canvas.style.width = windowWidth + 'px'
                     canvas.style.height = windowWidth / streamHeight  + "px"
-                    alert(canvas.style.width)
-                    alert(canvas.style.height)
                 }else{ // 页面宽
-                    alert(22222)
                     canvas.style.width = windowHeight * streamRatio + 'px'
                     canvas.style.height = windowHeight  + "px"
-                    alert(canvas.style.width)
-                    alert(canvas.style.height)
                 }
                 
                 const FPS = 30;
