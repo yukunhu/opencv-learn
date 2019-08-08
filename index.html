@@ -74,7 +74,6 @@
             
             function processVideo(){
                 try{
-                    alert(44444)
                     if(!stream){
                         src.delete()
                         dst.delete()
@@ -83,19 +82,20 @@
                     let begin = Date.now()
                     document.getElementById("button").innerHTML = begin
                     cap.read(src)
+                    alert(11111)
                     cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY)
+                    alert(22222)
                     cv.imshow('videoOutput', dst)
+                    alert(33333)
                     let delay = 1000/FPS - (Date.now() - begin)
                     setTimeout(processVideo, delay)
                 }catch(e){
-                    alert(22222)
                     alert(e)
                 }
                 
             }
             setTimeout(processVideo, 0);
         }).catch(function(err){
-            alert(11111)
             alert(err)
         })
     }
