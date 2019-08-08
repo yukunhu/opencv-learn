@@ -64,13 +64,25 @@
         navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream){
             video.srcObject = stream
             video.play().then(function(){
-                video.width = video.videoWidth
-                video.height = video.videoHeight
-                let src = new cv.Mat(video.height, video.width, cv.CV_8UC4)
-                let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1)
+                let streamWidth = video.videoWidth
+                let streamHeight = video.videoHeight
+                let windowWidth = window.innerWidth
+                let windowHeight = window.innerWidth
+                let streamRatio = streamWidth / streamHeight
+                let windowRatio = windowWidth / windowHeight
+                video.width = streamWidth
+                video.height = streamHeight
+                let src = new cv.Mat(streamHeight, streamWidth, cv.CV_8UC4)
+                let dst = new cv.Mat(streamHeight, streamWidth, cv.CV_8UC1)
                 let cap = new cv.VideoCapture(video)
-                canvas.style.width = window.innerWidth + 'px'
-                canvas.style.height = window.innerHeight + "px"
+                if(streamRatio > windowRatio){ // 视频宽
+                    canvas.style.width = windowWidth + 'px'
+                    canvas.style.height = windowWidth / streamHeight  + "px"
+                }else{ // 页面宽
+                    canvas.style.width = windowHeight * streamRatio + 'px'
+                    canvas.style.height = windowHeight  + "px"
+                }
+                
                 const FPS = 30;
                 processVideo()
                 function processVideo(){
