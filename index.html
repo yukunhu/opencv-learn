@@ -64,8 +64,8 @@
             let windowHeightPx = `${windowHeight}px`
             video.style.width = windowWidthPx
             video.style.height = windowHeightPx
-            video.setAttribute("width", windowWidth)
-            video.setAttribute("height", windowHeight)
+            video.setAttribute("width", video.videoWidth)
+            video.setAttribute("height", video.videoHeight)
             alert(video.width)
             // canvas.style.width = windowWidthPx
             // canvas.style.height = windowHeightPx
