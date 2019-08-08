@@ -19,7 +19,7 @@
     <!-- 图像 -->
 
     <!-- 视频 -->
-    <video id="videoInput" width="320" height="240" style="display: none" style="object-fit: contain;"></video>
+    <video id="videoInput" width="320" height="240" style="display: none" style="object-fit: contain; width: 320px; height: 320px"></video>
     <canvas id="videoOutput" width="320" height="240"></canvas>
     <button id="button">1111</button>
     <!-- 视频 -->
@@ -58,18 +58,18 @@
         let video = document.getElementById('videoInput')
         let canvas = document.getElementById('videoOutput')
         navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream){
-            let windowWidth = window.innerWidth
-            let windowHeight = window.innerHeight
-            let windowWidthPx = `${windowWidth}px`
-            let windowHeightPx = `${windowHeight}px`
-            video.style.width = windowWidthPx
-            video.style.height = windowHeightPx
-            video.setAttribute("width", windowWidth)
-            video.setAttribute("height", windowHeight)
-            canvas.style.width = windowWidthPx
-            canvas.style.height = windowHeightPx
-            canvas.setAttribute("width", windowWidth)
-            canvas.setAttribute("height", windowHeight)
+            // let windowWidth = window.innerWidth
+            // let windowHeight = window.innerHeight
+            // let windowWidthPx = `${windowWidth}px`
+            // let windowHeightPx = `${windowHeight}px`
+            // video.style.width = windowWidthPx
+            // video.style.height = windowHeightPx
+            // video.setAttribute("width", windowWidth)
+            // video.setAttribute("height", windowHeight)
+            // canvas.style.width = windowWidthPx
+            // canvas.style.height = windowHeightPx
+            // canvas.setAttribute("width", windowWidth)
+            // canvas.setAttribute("height", windowHeight)
             video.srcObject = stream
             video.play()
             
