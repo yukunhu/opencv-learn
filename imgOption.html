@@ -15,6 +15,14 @@
     <canvas id="output"></canvas>
     <script src="./js/utils.js"></script>
     <script>
+        let xmlhttp=new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function(){
+            if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+            console.log(xmlhttp.responseText)
+            }
+        }
+        xmlhttp.open('GET', "https://polaris.yxqiche.com/yxcode-gateway/user/currentUser")
+        xmlhttp.send()
         createScript(clahe)
 
         function clahe(){
